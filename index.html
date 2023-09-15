@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-env> - requests - json - BeautifulSoup </py-env>
+  </head>
+  <body>
+    <py-script>
+      import requests import json from bs4 import BeautifulSoup response =
+      requests.get(
+      'https://www.sofascore.com/arsenal-manchester-city/rsR#10385636',
+      headers={'User-Agent': 'Mozilla/5.0'} )
+      print(response.status_code)</py-script
+    >
+  </body>
+</html>
