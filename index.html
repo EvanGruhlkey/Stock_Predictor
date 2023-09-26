@@ -10,48 +10,12 @@
      </py-env>
   </head>
   <body>
+<!--Work in Progress-->
     <py-script> 
+
       import requests
       from bs4 import BeautifulSoup
       import pyodide_http
-
-      
-      pyodide_http.patch_all()
-
-      url = "https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States"
-      headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36'}
-      
-      r = requests.get(url=url, headers=headers)
-      
-      print(r)
-
-      soup = BeautifulSoup(r.content, 'html.parser')
-
-      caption = soup.find('caption')
-      table = caption.parent
-
-      rows = table.find_all('tr')
-
-      for row in rows[2:]:
-        print(row)
-
-      row.th.span.img['src']
-
-      for row in rows[2:1]:
-        src = row.th.span.img['src']
-        part = src.split('.svg')[0]
-        cleaned = part.replace('thumb/', '')
-        stripped = cleaned.strip('//')
-        img = "https://{}.svg".format(stripped) 
-        filename = img.split('/')[-1]
-        flag = requests.get(img, headers=headers)
-
-        if flag.status_code != 200:
-          print('Error getting {}'.format(filename))
-        else:
-          with open(filename, 'wb') as f:
-            no = f.write(flag.content)
-            print(no)
         
     </py-script>
   </body>
